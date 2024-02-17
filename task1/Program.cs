@@ -3,7 +3,7 @@
 class Trapeze
 {
     private int a, b, h;
-    private string color;
+    private readonly string color;
 
     public int A
     {
