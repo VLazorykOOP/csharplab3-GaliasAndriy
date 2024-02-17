@@ -55,30 +55,43 @@ class Trapeze
     {
         get { return a == b; }
     }
+
+    // Updated the method parameter type to Trapeze
+    public static void PrintTrapeze(Trapeze trapeze)
+    {
+        trapeze.DisplayLengths();
+
+        double roundedPerimeter = Math.Round(trapeze.CalculatePerimeter(), 2);
+
+        Console.WriteLine($"Perimeter: {roundedPerimeter}");
+        Console.WriteLine($"Area: {trapeze.CalculateArea()}");
+        Console.WriteLine($"Is Square: {trapeze.IsSquare}");
+        Console.WriteLine($"Color: {trapeze.Color}");
+        Console.WriteLine();
+    }
+
+    // Updated the method parameter type to Trapeze[]
+    public static void PrintAllTrapezes(Trapeze[] trapezes)
+    {
+        foreach (var trapeze in trapezes)
+        {
+            PrintTrapeze(trapeze);
+        }
+    }
 }
-
-
 
 class Program
 {
     static void Main()
     {
-        Trapeze trapeze1 = new Trapeze(5, 8, 4, "red");
-        Trapeze trapeze2 = new Trapeze(6, 6, 3, "blue");
+        // Corrected the array initialization
+        Trapeze[] trapezes = new Trapeze[]
+        {
+            new Trapeze(5, 8, 4, "red"),
+            new Trapeze(6, 6, 3, "blue"),
+            new Trapeze(15, 9, 7, "green")
+        };
 
-        trapeze1.DisplayLengths();
-        Console.WriteLine($"Perimeter: {trapeze1.CalculatePerimeter()}");
-        Console.WriteLine($"Area: {trapeze1.CalculateArea()}");
-        Console.WriteLine($"Is Square: {trapeze1.IsSquare}");
-        Console.WriteLine($"Color: {trapeze1.Color}");
-
-        Console.WriteLine();
-
-        trapeze2.DisplayLengths();
-        Console.WriteLine($"Perimeter: {trapeze2.CalculatePerimeter()}");
-        Console.WriteLine($"Area: {trapeze2.CalculateArea()}");
-        Console.WriteLine($"Is Square: {trapeze2.IsSquare}");
-        Console.WriteLine($"Color: {trapeze2.Color}");
-
+        Trapeze.PrintAllTrapezes(trapezes);
     }
 }
